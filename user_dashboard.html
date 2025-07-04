@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f8f9fa;
+            padding: 30px;
+        }
+        h2 {
+            color: #333;
+        }
+        .order-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h2>Welcome, {{ user.name }} ({{ user.role|capitalize }})</h2>
+
+    <h3>Your Orders</h3>
+
+    {% for order in orders %}
+    <div class="order-card">
+        <p><strong>Product:</strong> {{ order.name }}</p>
+        <p><strong>Quantity:</strong> {{ order.quantity }}</p>
+        <p><strong>Total Payment:</strong> ₹{{ order.price * order.quantity }}</p>
+    </div>
+    {% else %}
+    <p>You have no orders yet.</p>
+    {% endfor %}
+</body>
+</html>
